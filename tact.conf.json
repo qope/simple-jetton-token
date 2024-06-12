@@ -1,0 +1,13 @@
+{
+  "projects": [
+    {
+      "name": "contract",
+      "options": {
+        "debug": true,
+        "experimental": {
+          "inline": true
+        }
+      }
+    }
+  ]
+}
