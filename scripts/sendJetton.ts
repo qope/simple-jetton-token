@@ -3,6 +3,7 @@ import { SampleJetton } from "../wrappers/SampleJetton";
 import { JettonDefaultWallet } from "../build/SampleJetton/tact_JettonDefaultWallet";
 import { prepareClientWalletSender } from "./utils/prepare";
 import dotenv from "dotenv";
+import { sendJetton } from "./utils/send";
 dotenv.config();
 
 async function main() {
@@ -10,31 +11,9 @@ async function main() {
 
   const jettonAddressString = process.env.TON_JETTON_ADDRESS || "";
   const jettonAddress = Address.parse(jettonAddressString);
-  const jetton = client.open(SampleJetton.fromAddress(jettonAddress));
-  const jettonWalletAddress = await jetton.getGetWalletAddress(wallet.address);
-  const jettonWallet = client.open(
-    JettonDefaultWallet.fromAddress(jettonWalletAddress)
-  );
-  const jettonBalance = (await jettonWallet.getGetWalletData()).balance;
-  console.log("jetton balance", jettonBalance);
-
-  await jettonWallet.send(
-    sender,
-    {
-      value: toNano("0.1"),
-      bounce: true,
-    },
-    {
-      $$type: "TokenTransfer",
-      queryId: 0n,
-      amount: toNano(1), // send 1 jetton
-      destination: wallet.address, // send back to the wallet
-      response_destination: wallet.address,
-      custom_payload: null,
-      forward_ton_amount: 0n,
-      forward_payload: new Cell(),
-    }
-  );
+  const owner = wallet.address;
+  const to = owner; // send back to the owner
+  await sendJetton(client, sender, owner, jettonAddress, to, toNano(10));
 }
 
 main()
