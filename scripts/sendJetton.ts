@@ -21,13 +21,13 @@ async function main() {
   await jettonWallet.send(
     sender,
     {
-      value: toNano("0.05"),
+      value: toNano("0.1"),
       bounce: true,
     },
     {
       $$type: "TokenTransfer",
       queryId: 0n,
-      amount: toNano(1),
+      amount: toNano(1), // send 1 jetton
       destination: wallet.address, // send back to the wallet
       response_destination: wallet.address,
       custom_payload: null,
