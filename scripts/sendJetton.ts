@@ -1,14 +1,14 @@
 import { Address, Cell, toNano } from "@ton/ton";
-
 import { SampleJetton } from "../wrappers/SampleJetton";
 import { JettonDefaultWallet } from "../build/SampleJetton/tact_JettonDefaultWallet";
 import { prepareClientWalletSender } from "./utils/prepare";
-
-const jettonAddressString = "EQB4N65OBmj372W-a5TfhkCVi8cngt0WhBkBsBF2dI2yNTZN";
+import dotenv from "dotenv";
+dotenv.config();
 
 async function main() {
   const { client, wallet, sender } = await prepareClientWalletSender();
 
+  const jettonAddressString = process.env.TON_JETTON_ADDRESS || "";
   const jettonAddress = Address.parse(jettonAddressString);
   const jetton = client.open(SampleJetton.fromAddress(jettonAddress));
   const jettonWalletAddress = await jetton.getGetWalletAddress(wallet.address);
