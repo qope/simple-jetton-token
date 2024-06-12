@@ -9,6 +9,7 @@ import {
 	toNano,
 } from '@ton/ton'
 import dotenv from 'dotenv'
+import { SampleJetton } from '../wrappers/SampleJetton'
 dotenv.config()
 
 async function main() {
@@ -30,6 +31,8 @@ async function main() {
 
 	const balance = await client.getBalance(address)
 	console.log('balance', balance)
+
+	// const escrow = client.open(await SampleJetton.fromInit())
 }
 
 main()
