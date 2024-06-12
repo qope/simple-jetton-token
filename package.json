@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "build": "blueprint build --all",
-    "main": "ts-node scripts/main.ts",
+    "check-balance": "ts-node scripts/checkBalance.ts",
     "deploy-jetton": "ts-node scripts/deployJetton.ts",
     "send-jetton": "ts-node scripts/sendJetton.ts"
   },
