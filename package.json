@@ -5,7 +5,8 @@
   "scripts": {
     "build": "blueprint build --all",
     "main": "ts-node scripts/main.ts",
-    "deploy-jetton": "ts-node scripts/deployJetton.ts"
+    "deploy-jetton": "ts-node scripts/deployJetton.ts",
+    "send-jetton": "ts-node scripts/sendJetton.ts"
   },
   "devDependencies": {
     "@ton/blueprint": "^0.19.0",
