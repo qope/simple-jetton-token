@@ -21,6 +21,8 @@ async function main() {
     await SampleJetton.fromInit(owner, content, maxSupply)
   );
 
+  // In TON, calling a method of an undeployed contract deploys the contract.
+  // Here, the contract is deployed by calling the MINT method.
   await jetton.send(
     sender,
     {
