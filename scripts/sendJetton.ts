@@ -1,6 +1,4 @@
-import { Address, Cell, toNano } from "@ton/ton";
-import { SampleJetton } from "../wrappers/SampleJetton";
-import { JettonDefaultWallet } from "../build/SampleJetton/tact_JettonDefaultWallet";
+import { Address, toNano } from "@ton/ton";
 import { prepareClientWalletSender } from "./utils/prepare";
 import dotenv from "dotenv";
 import { sendJetton } from "./utils/send";
